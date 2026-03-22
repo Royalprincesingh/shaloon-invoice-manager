@@ -1,8 +1,8 @@
 <div align="center">
 
-# 💇 Shaloon Invoice Manager
+# 💈 Shaloon Invoice Manager
 
-### A professional Salon Invoice Management System
+**A professional, full-featured invoice management system built for modern salons and beauty businesses.**
 
 [![Node.js](https://img.shields.io/badge/Node.js-18%2B-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
 [![Express](https://img.shields.io/badge/Express-4.18-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
@@ -10,8 +10,7 @@
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-3-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
-
-> Manage customers, services, and invoices for your salon — fast, clean, and ready to deploy.
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](CONTRIBUTING.md)
 
 </div>
 
@@ -24,6 +23,7 @@
 - [Tech Stack](#-tech-stack)
 - [Repository Structure](#-repository-structure)
 - [Quick Start](#-quick-start)
+- [Usage](#-usage)
 - [Project Comparison](#-project-comparison)
 - [API Reference](#-api-reference)
 - [Environment Variables](#-environment-variables)
@@ -34,55 +34,33 @@
 
 ---
 
-## 🔍 Overview
+## 🌟 Overview
 
-**Shaloon Invoice Manager** is a full-featured billing and invoice management system built specifically for salons and beauty parlors. It enables salon owners to maintain a customer database, define a service catalog, and instantly generate professional invoices — complete with tax, discount, and status tracking.
+**Shaloon Invoice Manager** is a lightweight, production-ready web application designed to streamline billing operations for salons and beauty studios. It enables owners and staff to manage customers, define service catalogs, and generate professional invoices — all from a clean, browser-based interface.
 
 This repository contains **two implementations** of the same product:
 
 | Project | Stack | Status |
 |---------|-------|--------|
-| [`salon-invoice-mvc/`](salon-invoice-mvc/) | Express + EJS + MongoDB | ✅ **Recommended – Production Ready** |
+| [`salon-invoice-mvc/`](salon-invoice-mvc/) | Express + EJS + MongoDB | ✅ **Recommended — Production Ready** |
 | [`shaloon-invoice/`](shaloon-invoice/) | React 19 + Vite + Express + MongoDB | ⚠️ Legacy |
 
 ---
 
 ## ✨ Features
 
-### 🔐 Authentication
-- Secure session-based login (MVC) / JWT-based login (React)
-- Bcrypt password hashing
-- Protected routes — all pages require authentication
-
-### 👥 Customer Management
-- Add, view, and delete customers
-- Store name, phone, and email
-- Search customers by name or phone number
-
-### 🛎️ Service Catalog
-- Define salon services (haircut, coloring, facial, etc.)
-- Set description and price per service
-- Reusable across all invoices
-
-### 🧾 Invoice Engine
-- Select customer + multiple services with quantities
-- Apply **discount** amount and **tax** percentage
-- Auto-calculates subtotal → discount → tax → **final amount**
-- Auto-generated unique invoice numbers (`INV-XXXXXX-XXX`)
-- Track invoice status: **Paid / Unpaid**
-
-### 📊 Dashboard
-- Browse all invoices with live search
-- Filter by: **Today**, **Last 7 Days**, **Last 30 Days**
-- One-click view, print, or delete
-
-### 🖨️ Print-Friendly Invoices
-- Clean, professional invoice layout
-- Optimized for both screen and print
-
-### 📱 Responsive Design
-- Mobile-first Tailwind CSS layout
-- Works on desktop, tablet, and phone
+| Feature | Description |
+|---|---|
+| 🔐 **Authentication** | Secure session-based login for staff |
+| 👥 **Customer Management** | Add, view, and delete customer profiles |
+| 💼 **Service Catalog** | Maintain a reusable list of services with pricing |
+| 🧾 **Invoice Generation** | Create multi-service invoices with auto-numbering |
+| 💰 **Tax & Discount** | Apply GST/tax and discount amounts per invoice |
+| 📊 **Dashboard** | Filterable dashboard with Today / This Week / This Month views |
+| 🔍 **Search** | Full-text search across invoices and customers |
+| 🖨️ **Print View** | Clean, print-friendly invoice layout |
+| 📱 **Responsive UI** | Mobile-friendly design powered by Tailwind CSS |
+| 🌱 **Seed Data** | One-command sample data population for quick demos |
 
 ---
 
@@ -94,7 +72,7 @@ This repository contains **two implementations** of the same product:
 |-------|-----------|
 | Runtime | Node.js 18+ |
 | Framework | Express 4.18 |
-| Templating | EJS + Express-EJS-Layouts |
+| Templating | EJS + express-ejs-layouts |
 | Database | MongoDB 7 via Mongoose |
 | Auth | express-session + bcrypt |
 | Styling | Tailwind CSS (CDN) |
@@ -122,16 +100,16 @@ shaloon-invoice-manager/
 ├── salon-invoice-mvc/              # ✅ Production-ready MVC app
 │   ├── config/
 │   │   └── db.js                  # MongoDB connection
-│   ├── models/
-│   │   ├── Customer.js
-│   │   ├── Service.js
-│   │   ├── Invoice.js
-│   │   └── User.js
 │   ├── controllers/
 │   │   ├── authController.js
 │   │   ├── customerController.js
 │   │   ├── serviceController.js
 │   │   └── invoiceController.js
+│   ├── models/
+│   │   ├── Customer.js
+│   │   ├── Invoice.js
+│   │   ├── Service.js
+│   │   └── User.js
 │   ├── routes/
 │   │   ├── authRoutes.js
 │   │   ├── customerRoutes.js
@@ -141,10 +119,11 @@ shaloon-invoice-manager/
 │   │   ├── layout.ejs
 │   │   ├── login.ejs
 │   │   ├── dashboard.ejs
+│   │   ├── customers.ejs
+│   │   ├── services.ejs
 │   │   ├── invoice_new.ejs
 │   │   ├── invoice_detail.ejs
-│   │   ├── customers.ejs
-│   │   └── services.ejs
+│   │   └── invoices_list.ejs
 │   ├── public/
 │   │   └── js/main.js             # Client-side scripts
 │   ├── server.js                  # App entry point
@@ -163,35 +142,39 @@ shaloon-invoice-manager/
 
 ### Prerequisites
 
-- [Node.js 18+](https://nodejs.org/)
-- [MongoDB](https://www.mongodb.com/) running locally **or** a [MongoDB Atlas](https://www.mongodb.com/atlas) URI
+- [Node.js](https://nodejs.org/) v18 or higher
+- [MongoDB](https://www.mongodb.com/try/download/community) (local) **or** a [MongoDB Atlas](https://www.mongodb.com/atlas) connection string
 
-### 1 — Clone the repo
+### 1 — Clone the repository
 
 ```bash
 git clone https://github.com/Royalprincesingh/shaloon-invoice-manager.git
-cd shaloon-invoice-manager
+cd shaloon-invoice-manager/salon-invoice-mvc
 ```
 
-### 2 — Set up the production app
+### 2 — Install dependencies
 
 ```bash
-cd salon-invoice-mvc
 npm install
-cp .env.example .env        # Edit if needed
 ```
 
-### 3 — Start MongoDB (if not running)
+### 3 — Configure environment variables
 
 ```bash
-# macOS (Homebrew)
+cp .env.example .env
+```
+
+### 4 — Start MongoDB (skip if using Atlas)
+
+```bash
+# macOS with Homebrew
 brew services start mongodb-community
 
 # Docker
 docker run -d -p 27017:27017 --name mongo mongo:latest
 ```
 
-### 4 — Seed sample data
+### 5 — Seed sample data
 
 ```bash
 npm run seed
@@ -199,7 +182,7 @@ npm run seed
 
 Creates: 1 admin user, 2 sample customers, 3 services, 1 invoice.
 
-### 5 — Launch the app
+### 6 — Launch the app
 
 ```bash
 npm run dev          # Development (auto-reload)
@@ -213,6 +196,16 @@ Open **[http://localhost:3000](http://localhost:3000)** and log in:
 |-------|-------|
 | Username | `admin` |
 | Password | `admin123` |
+
+---
+
+## 💡 Usage
+
+1. **Log in** using the admin credentials above.
+2. Navigate to **Customers** to add your clients.
+3. Navigate to **Services** to define your offerings (e.g., Haircut ₹200, Facial ₹500).
+4. Click **New Invoice**, select a customer and services, and save.
+5. View, print, or delete invoices from the **Invoices** dashboard.
 
 ---
 
@@ -233,45 +226,46 @@ Open **[http://localhost:3000](http://localhost:3000)** and log in:
 
 ## 📡 API Reference
 
-All endpoints require an active session (login first).
+All endpoints require an active session (log in first).
 
-### Auth
+### Authentication
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| `GET` | `/auth/login` | Show login page |
-| `POST` | `/auth/login` | Submit credentials |
+| `GET` | `/auth/login` | Render login page |
+| `POST` | `/auth/login` | Submit login credentials |
 | `GET` | `/auth/logout` | End session |
 
 ### Customers
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| `GET` | `/customers` | List all customers |
-| `POST` | `/customers` | Add a new customer |
-| `POST` | `/customers/delete/:id` | Remove a customer |
-| `GET` | `/customers/api` | JSON list of customers |
+| `GET` | `/customers` | List all customers (HTML) |
+| `POST` | `/customers` | Create a new customer |
+| `POST` | `/customers/delete/:id` | Delete a customer |
+| `GET` | `/customers/api` | List all customers (JSON) |
 
 ### Services
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| `GET` | `/services` | List all services |
-| `POST` | `/services` | Add a new service |
-| `POST` | `/services/delete/:id` | Remove a service |
-| `GET` | `/services/api` | JSON list of services |
+| `GET` | `/services` | List all services (HTML) |
+| `POST` | `/services` | Create a new service |
+| `POST` | `/services/delete/:id` | Delete a service |
+| `GET` | `/services/api` | List all services (JSON) |
 
 ### Invoices
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| `GET` | `/invoices` | Dashboard (filtered list) |
+| `GET` | `/invoices` | Dashboard with filters (HTML) |
+| `GET` | `/invoices/list` | All invoices (HTML) |
 | `GET` | `/invoices/new` | New invoice form |
 | `POST` | `/invoices/create` | Save a new invoice |
 | `GET` | `/invoices/:id` | View invoice detail |
 | `POST` | `/invoices/delete/:id` | Delete an invoice |
-| `GET` | `/invoices/api/all` | JSON list of all invoices |
-| `GET` | `/invoices/api/detail/:id` | JSON detail of one invoice |
+| `GET` | `/invoices/api/all` | All invoices (JSON) |
+| `GET` | `/invoices/api/detail/:id` | Invoice detail (JSON) |
 
 ---
 
@@ -296,8 +290,8 @@ ADMIN_PASS=admin123
 
 ```bash
 # Check if MongoDB is running
-brew services list          # macOS
-sudo systemctl status mongod  # Linux
+brew services list             # macOS
+sudo systemctl status mongod   # Linux
 
 # Start it
 brew services start mongodb-community   # macOS
@@ -331,17 +325,15 @@ npm install
 
 ## 🌐 Deployment
 
-### MongoDB Atlas (Recommended for production)
+### MongoDB Atlas (recommended for production)
 
 1. Create a free cluster at [cloud.mongodb.com](https://cloud.mongodb.com)
-2. Copy the connection string and set it in `.env`:
+2. Replace `MONGO_URI` in `.env`:
    ```env
    MONGO_URI=mongodb+srv://<user>:<pass>@cluster.mongodb.net/salon_invoice
    ```
 
 ### Persistent Session Store
-
-Install `connect-mongo` to survive server restarts:
 
 ```bash
 npm install connect-mongo
@@ -369,11 +361,11 @@ docker run -p 3000:3000 --env-file salon-invoice-mvc/.env shaloon-invoice
 
 Contributions are welcome!
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/your-feature`
-3. Commit your changes: `git commit -m "feat: add your feature"`
-4. Push the branch: `git push origin feature/your-feature`
-5. Open a Pull Request
+1. **Fork** the repository
+2. **Create** a feature branch: `git checkout -b feature/your-feature`
+3. **Commit** your changes: `git commit -m "feat: add your feature"`
+4. **Push** to your branch: `git push origin feature/your-feature`
+5. **Open** a Pull Request
 
 Please follow [Conventional Commits](https://www.conventionalcommits.org/) for commit messages.
 
@@ -381,12 +373,10 @@ Please follow [Conventional Commits](https://www.conventionalcommits.org/) for c
 
 ## 📄 License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
 
 ---
 
 <div align="center">
-
-Made with ❤️ for salon owners everywhere
-
+  Made with ❤️ for salon owners everywhere
 </div>
