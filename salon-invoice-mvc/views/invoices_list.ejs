@@ -1,0 +1,31 @@
+<h1 class="text-2xl font-semibold mb-4">All Invoices</h1>
+<div class="bg-white rounded shadow overflow-auto">
+  <table class="w-full text-left">
+    <thead class="bg-gray-100">
+      <tr>
+        <th class="p-3">#</th>
+        <th class="p-3">Invoice #</th>
+        <th class="p-3">Customer</th>
+        <th class="p-3">Total</th>
+        <th class="p-3">Status</th>
+        <th class="p-3">Date</th>
+        <th class="p-3">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% invoices.forEach((inv, idx) => { %>
+        <tr class="border-t">
+          <td class="p-3"><%= idx+1 %></td>
+          <td class="p-3"><%= inv.invoiceNumber %></td>
+          <td class="p-3"><%= inv.customer ? inv.customer.name : '—' %></td>
+          <td class="p-3">₹<%= inv.finalAmount.toFixed(2) %></td>
+          <td class="p-3"><%= inv.status %></td>
+          <td class="p-3"><%= inv.createdAt.toLocaleString() %></td>
+          <td class="p-3">
+            <a href="/invoices/<%= inv._id %>" class="text-blue-600">View</a>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>

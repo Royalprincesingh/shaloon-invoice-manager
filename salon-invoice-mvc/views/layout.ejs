@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Salon Invoice</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-50 min-h-screen font-sans">
+    <nav class="bg-white shadow">
+      <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+        <a href="/" class="text-xl font-semibold">Salon Invoice</a>
+        <div class="flex items-center space-x-4">
+          <a href="/invoices" class="text-sm">Invoices</a>
+          <a href="/invoices/new" class="text-sm">Create</a>
+          <a href="/customers" class="text-sm">Customers</a>
+          <a href="/services" class="text-sm">Services</a>
+          <% if (user) { %>
+            <span class="text-sm text-gray-600">Hi, <%= user %></span>
+            <a href="/auth/logout" class="text-sm text-red-500">Logout</a>
+          <% } else { %>
+            <a href="/auth/login" class="text-sm">Login</a>
+          <% } %>
+        </div>
+      </div>
+    </nav>
+    <main class="max-w-6xl mx-auto p-6">
+      <%- body %>
+    </main>
+    <script src="/public/js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<div class="bg-white p-6 rounded shadow">
+  <div class="flex justify-between items-center mb-4">
+    <div>
+      <h2 class="text-xl font-semibold">Invoice <%= inv.invoiceNumber %></h2>
+      <div class="text-sm text-gray-600">Created: <%= inv.createdAt.toLocaleString() %></div>
+    </div>
+    <div>
+      <button onclick="window.print()" class="bg-gray-800 text-white px-3 py-2 rounded">Print</button>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-2 gap-4 mb-4">
+    <div>
+      <h3 class="font-semibold">Customer</h3>
+      <div><%= inv.customer ? inv.customer.name : '—' %></div>
+      <div class="text-sm text-gray-600"><%= inv.customer ? inv.customer.phone : '' %></div>
+    </div>
+    <div>
+      <h3 class="font-semibold">Summary</h3>
+      <div>Total: ₹<%= inv.totalAmount.toFixed(2) %></div>
+      <div>Discount: ₹<%= inv.discount.toFixed(2) %></div>
+      <div>Tax: <%= inv.tax %>%</div>
+      <div class="font-bold">Final: ₹<%= inv.finalAmount.toFixed(2) %></div>
+    </div>
+  </div>
+
+  <div>
+    <h3 class="font-semibold mb-2">Services</h3>
+    <table class="w-full">
+      <thead class="bg-gray-100"><tr><th class="p-2">Service</th><th class="p-2">Qty</th><th class="p-2">Price</th></tr></thead>
+      <tbody>
+        <% inv.services.forEach(s => { %>
+          <tr class="border-t"><td class="p-2"><%= s.name %></td><td class="p-2"><%= s.qty %></td><td class="p-2">₹<%= (s.price*s.qty).toFixed(2) %></td></tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>

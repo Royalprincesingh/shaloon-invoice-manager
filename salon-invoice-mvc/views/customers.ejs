@@ -1,0 +1,37 @@
+<div class="flex items-center justify-between mb-4">
+  <h1 class="text-2xl font-semibold">Customers</h1>
+  <a href="/invoices/new" class="bg-green-600 text-white px-3 py-2 rounded">New Invoice</a>
+</div>
+
+<div class="bg-white p-4 rounded shadow">
+  <form method="post" action="/customers" class="grid grid-cols-3 gap-3">
+    <input name="name" placeholder="Name" class="border px-3 py-2 rounded" required />
+    <input name="phone" placeholder="Phone" class="border px-3 py-2 rounded" required />
+    <input name="email" placeholder="Email" class="border px-3 py-2 rounded" />
+    <div class="col-span-3 text-right">
+      <button class="bg-blue-600 text-white px-4 py-2 rounded">Add Customer</button>
+    </div>
+  </form>
+</div>
+
+<div class="mt-4 bg-white rounded shadow">
+  <table class="w-full text-left">
+    <thead class="bg-gray-100">
+      <tr><th class="p-3">Name</th><th class="p-3">Phone</th><th class="p-3">Email</th><th class="p-3">Actions</th></tr>
+    </thead>
+    <tbody>
+      <% customers.forEach(c => { %>
+        <tr class="border-t">
+          <td class="p-3"><%= c.name %></td>
+          <td class="p-3"><%= c.phone %></td>
+          <td class="p-3"><%= c.email || '—' %></td>
+          <td class="p-3">
+            <form action="/customers/delete/<%= c._id %>" method="post" class="inline">
+              <button class="text-red-600">Delete</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
