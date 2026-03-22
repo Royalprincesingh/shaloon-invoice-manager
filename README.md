@@ -1,0 +1,1 @@
+# shaloon-invoice-manager
